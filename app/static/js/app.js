@@ -25,7 +25,7 @@ app.component('app-header', {
             <router-link class="nav-link" to="/">Home <span class="sr-only">(current)</span></router-link>
             </li>
             <li class="nav-item active">
-          <router-link class="nav-link" to="/upload">Upload</router-link>
+            <router-link to="/upload" class="nav-link">Upload</router-link>
 
           </li>
         </ul>
@@ -76,11 +76,15 @@ const NotFound = {
     }
 };
 
-const uploadForm = app.component('upload-form', {
+const uploadForm = {
+    name: 'uploadForm',
     template: `
-    <div>
+    
     <h1>Upload Form</h1><br>
+    <div>
+   
     <form id="uploadForm" method="POST" enctype="multipart/form-data" @submit.prevent="uploadPhoto">
+    
         <label for="description">Description</label><br>
         <textarea class="form-control" name="description" placeholder="Enter description here"></textarea>
         <br>
@@ -113,7 +117,7 @@ const uploadForm = app.component('upload-form', {
                 });
         }
     }
-});
+};
 // Define Routes
 const routes = [
     { path: "/", component: Home },
@@ -130,6 +134,5 @@ const router = VueRouter.createRouter({
 });
 
 
-app.use(router);
-
+app.use(router)
 app.mount('#app');
